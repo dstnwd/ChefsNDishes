@@ -1,0 +1,55 @@
+@model Dish
+
+<div class="text-center">
+    <h1>Add a Dish!</h1>
+    <form action="addDish" method="post">
+        <div class="form-group">
+            <label for="Name">Name of Dish</label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="Calories"># of Calories</label>
+            <input asp-for="Calories" class="form-control">
+            <span asp-validation-for="Calories" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="Tastiness">Tastiness</label>
+            <select class="form-control" name="Tastiness" id="">
+                <option hidden selected disabled>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </option>
+            </select>
+            <span asp-validation-for="Tastiness" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <input type="text-area" asp-for="Description" class="form-control">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+        <label for="Chef">Chef</label>
+            <select asp-for="ChefId" class="form-control">
+                @{
+                    @foreach (Chef x in ViewBag.AllChefs)
+                    {
+                        <option value="@x.ChefId">@x.FirstName @x.LastName</option>
+                    }
+                }
+            </select>
+        </div>
+<span asp-validation-for="ChefId"></span>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+    </form>
+</div>

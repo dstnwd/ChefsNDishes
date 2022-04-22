@@ -1,0 +1,30 @@
+@model Dish
+<div class="text-center">
+    <h1><a href="/">Chefs</a> | Dishes</h1><br>
+    <h2>Yum, take a look at our tasty dishes!</h2>
+</div><br>
+<div class="col-6">
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Chef</th>
+                <th>Tastiness</th>
+                <th>Calories</th>
+            </tr>
+                @{
+                    foreach (var x in ViewBag.AllChefs)
+                    {
+                        @foreach(Dish d in x.MyDishes)
+                        {
+                        <tr>
+                            <td>@d.Name</td>
+                            <td>@x.FirstName @x.LastName</td>
+                            <td>@d.Tastiness</td>
+                            <td>@d.Calories</td>
+                        </tr>
+                        }
+                    }
+                }
+        </table>
+</div><br>
+<a href="/dishes/new">Add a Dish</a>
